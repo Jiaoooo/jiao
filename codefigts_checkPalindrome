@@ -1,0 +1,21 @@
+bool checkPalindrome(char * inputString) {
+
+	int i = 0;
+	bool flag = true;
+	int n = 0;
+	n = strlen(inputString);
+	int j = n - 1;
+	for (i = 0; i <= (n - 1) / 2; i++, j--)
+	{
+		
+		if (inputString[i] != inputString[j])
+		{
+			flag = false;
+			break;
+			
+		}
+		
+	}
+	
+	return flag;
+}
