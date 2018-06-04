@@ -1,0 +1,53 @@
+// Definition for arrays:
+// typedef struct arr_##name {
+//   int size;
+//   type *arr;
+// } arr_##name;
+//
+// arr_##name alloc_arr_##name(int len) {
+//   arr_##name a = {len, len > 0 ? malloc(sizeof(type) * len) : NULL};
+//   return a;
+// }
+//
+//
+int makeArrayConsecutive2(arr_integer statues) {
+	int i, j, n, temp;
+	n = statues.size;
+
+	for (i = 0; i<n ; i++)
+	{
+		for (j = 0; j<n - i - 1; j++)
+		{
+			if (statues.arr[j]>statues.arr[j + 1])
+			{
+				temp = statues.arr[j];
+				statues.arr[j] = statues.arr[j + 1];
+				statues.arr[j + 1] = temp;
+
+			}
+		}
+	//	printf("arr[%d],%d\n", i, statues.arr[i]);
+	}
+	int ret = 0;
+	int m = 1;
+
+	for (i = 0; i<n - 1; i++)
+	{
+
+		while (1)
+		{
+			if ((statues.arr[i] + m) != statues.arr[i + 1])
+			{
+				ret++;
+				m++;
+			}
+			else
+			{
+				m = 1;
+				break;
+			}
+		}
+	}
+	//printf("%d\n",ret);
+	return ret;
+}
